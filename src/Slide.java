@@ -16,4 +16,23 @@ public class Slide {
 
         return "" + this.pictures[0].getId() + " " + this.pictures[1].getId();
     }
+
+
+    public Picture getPicture1() {
+        return pictures[0];
+    }
+
+    public Picture getPicture2() {
+        return pictures[1];
+    }
+
+    public void setPicture1(Picture picture) {
+        pictures[0] = picture;
+    }
+
+
+    public void setPicture2(Picture picture) {
+        pictures[1] = picture;
+    }
+
 }
