@@ -20,7 +20,7 @@ public class Slide {
         return "" + this.pictures[0].getId() + " " + this.pictures[1].getId();
     }
 
-    
+
     public Picture getPicture1() {
         return pictures[0];
     }
