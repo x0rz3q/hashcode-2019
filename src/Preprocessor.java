@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class Preprocessor {
     // creates all slides
-    static ArrayList<Slide> preprocess(HashSet<Picture> verticles, HashSet<Picture> horizontals) {
+    static ArrayList<Slide> preprocess(HashSet<Picture> verticles, HashSet<Picture> horizontals, int noIterations) {
         ArrayList<Slide> result = new ArrayList<>();
 
         ArrayList<Picture> pictures = new ArrayList<>();
@@ -27,6 +27,9 @@ public class Preprocessor {
         while (pictures.size() > 0) {
             result.add(new Slide(pictures.remove(0), pictures.remove(pictures.size() - 1)));
         }
+
+        LocalOptimizerVerticalPairs optimizer = new LocalOptimizerVerticalPairs();
+        optimizer.optimize(result, noIterations);
 
         for (Picture p : horizontals) {
             result.add(new Slide(p));
