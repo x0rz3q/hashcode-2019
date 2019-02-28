@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RandomSolution {
     static Random random = new Random();
 
-    static SlideShow generate(ArrayList<Picture> pictures) {
+    static SlideShow generate(List<Picture> pictures) {
         int size = pictures.size();
         ArrayList<Integer> taken = new ArrayList<>();
         for (int i = 0; i < size; i++) {
@@ -13,7 +14,7 @@ public class RandomSolution {
 
         SlideShow SS = new SlideShow();
         for (int i = 0; i < size; i++) {
-            int j = random.nextInt(size + 1);
+            int j = random.nextInt(size);
             while (taken.get(j) == 1) {
                 j = (j + 1) % size;
             }
