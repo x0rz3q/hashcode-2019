@@ -33,7 +33,7 @@ public class Controller {
             if (sizemapSlides.containsKey(s.getTags().size()))
                 sizemapSlides.get(s.getTags().size()).add(s);
             else
-                sizemapSlides.put(s.getTags().size(), new ArrayList<Picture>(){{add(s);}});
+                sizemapSlides.put(s.getTags().size(), new ArrayList<Slide>(){{add(s);}});
         }
 
 
