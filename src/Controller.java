@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
 public class Controller {
@@ -20,5 +21,17 @@ public class Controller {
 
             parser.readSolution(args[1]);
         }
+
+        List<Slide> slides = Preprocessor.preprocess(parser.getVerticals(), parser.getHorizontals());
+
+        LocalOptimizerOrder optimizer = new LocalOptimizerOrder();
+
+        Slide[] slideArray = new Slide[slides.size()];
+        slideArray = slides.toArray(slideArray);
+
+        optimizer.optimize(slideArray);
+
+        (new SlideShow(Arrays.asList(slideArray))).output("test.txt");
+
     }
 }

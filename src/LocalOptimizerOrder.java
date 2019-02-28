@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class LocalOptimizer {
+public class LocalOptimizerOrder {
 
     private Random random = new Random();
     private Slide[] slides;
