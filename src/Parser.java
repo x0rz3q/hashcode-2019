@@ -21,7 +21,7 @@ public class Parser {
             String orientation = scanner.next();
 
             int amount = scanner.nextInt();
-            List<Integer> tags = new ArrayList<>();
+            Set<Integer> tags = new HashSet<>();
 
             for (int i = 0; i < amount; i++) {
                 String tag = scanner.next();
