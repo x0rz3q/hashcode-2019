@@ -6,7 +6,7 @@ import java.util.*;
 import static java.lang.Math.min;
 
 public class Evaluator {
-    static int evaluateSlideShow(ArrayList<Slide> solution) {
+    static int evaluateSlideShow(List<Slide> solution) {
         int sum = 0;
 
         for (int i = 0; i < solution.size() - 1; i++) {
