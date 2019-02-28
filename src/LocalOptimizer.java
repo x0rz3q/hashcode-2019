@@ -5,14 +5,12 @@ public class LocalOptimizer {
     private Random random = new Random();
     private Slide[] slides;
 
-    public Slide[] optimize(Slide[] input) {
+    public void optimize(Slide[] input) {
         slides = input;
 
         for (int i = 0; i < 100; i++ ){
             optimizeOnce();
         }
-
-        return input;
     }
 
 
