@@ -20,15 +20,11 @@ public class Evaluator {
         HashSet<Integer> slide2tags = new HashSet<>();
 
         for (Picture pic : slide1.pictures) {
-            for (int tag : pic.getTags()) {
-                slide1tags.add(tag);
-            }
+            slide1tags.addAll(pic.getTags());
         }
 
         for (Picture pic : slide2.pictures) {
-            for (int tag : pic.getTags()) {
-                slide2tags.add(tag);
-            }
+            slide2tags.addAll(pic.getTags());
         }
 
         Set<Integer> intersection = new HashSet<Integer>(slide1tags);
