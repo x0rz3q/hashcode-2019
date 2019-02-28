@@ -1,5 +1,7 @@
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Controller {
@@ -24,6 +26,16 @@ public class Controller {
 
         // getting first order with good vertical matching
         List<Slide> slides = Preprocessor.preprocess(parser.getVerticals(), parser.getHorizontals());
+
+        //
+        HashMap<Integer, ArrayList<Slide>> sizemapSlides = new HashMap<>();
+        for (Slide s: slides) { 
+            if (sizemapSlides.containsKey(s.getTags().size()))
+                sizemapSlides.get(s.getTags().size()).add(s);
+            else
+                sizemapSlides.put(s.getTags().size(), new ArrayList<Picture>(){{add(s);}});
+        }
+
 
         // get good first sort
 
