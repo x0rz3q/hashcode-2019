@@ -21,11 +21,11 @@ public class Preprocessor {
         }
         Collections.sort(pictures, new picComparator());
 
-        while (pictures.size() > 1) {
-            result.add(new Slide(pictures.remove(0), pictures.remove(pictures.size() - 1)));
+        if (pictures.size() % 2 == 1) {
+            pictures.remove(0);
         }
-        if (pictures.size() == 1) {
-            result.add(new Slide(pictures.get(0)));
+        while (pictures.size() > 0) {
+            result.add(new Slide(pictures.remove(0), pictures.remove(pictures.size() - 1)));
         }
 
         for (Picture p : horizontals) {
