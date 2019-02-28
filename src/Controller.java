@@ -39,8 +39,8 @@ public class Controller {
 
 
         // get good first sort
-
-        // TODO: add
+        GreedySolution2 greedy = new GreedySolution2();
+        slides = greedy.getGreedySolution(sizemapSlides, slides.size());
 
         // optimize order of slides
         SlideShow best = null;

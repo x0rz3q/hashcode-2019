@@ -9,7 +9,11 @@ public class Slide {
     }
     public Slide(Picture p1, Picture p2) {
         pictures = new Picture[] {p1, p2};
+<<<<<<< HEAD
     }
+=======
+   }
+>>>>>>> c5699ff2c3a18a9ccb24b635d2a1f6bf644fcaa6
 
     @Override
     public String toString() {
