@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 
 public class Preprocessor {
-    //
+    // creates all slides
     static ArrayList<Slide> preprocess(HashSet<Picture> verticles, HashSet<Picture> horizontals) {
         ArrayList<Slide> result = new ArrayList<>();
 
