@@ -10,6 +10,7 @@ public class Parser {
     private HashSet<Picture> verticals = new HashSet<>();
     private HashSet<Picture> horizontals = new HashSet<>();
     private HashMap<Integer, ArrayList<Picture>> sizemap = new HashMap<>();
+    private HashMap<String, ArrayList<Picture>> pictureMap = new HashMap<>();
 
     public Parser(String file) throws Exception {
         Scanner scanner = new Scanner(new File(file));
@@ -23,6 +24,8 @@ public class Parser {
             int amount = scanner.nextInt();
             Set<Integer> tags = new HashSet<>();
 
+            Picture picture = new Picture(orientation.equals("H"), id, new HashSet<Integer>());
+
             for (int i = 0; i < amount; i++) {
                 String tag = scanner.next();
 
@@ -33,14 +36,22 @@ public class Parser {
                     tags.add(tagIndex);
                     tagIndex++;
                 }
+
+                if (this.pictureMap.containsKey(tag)) {
+                    this.pictureMap.get(tag).add(picture);
+                } else {
+                    this.pictureMap.put(tag, new ArrayList<Picture>());
+                    this.pictureMap.get(tag).add(picture);
+                }
             }
 
-            Picture picture = new Picture(orientation.equals("H"), id++, tags);
-
+            picture = new Picture(orientation.equals("H"), id++, tags);
             if (this.sizemap.containsKey(tags.size()))
                 this.sizemap.get(tags.size()).add(picture);
-            else
-                this.sizemap.put(tags.size(), new ArrayList<Picture>(){{add(picture);}});
+            else {
+                this.sizemap.put(tags.size(), new ArrayList<Picture>());
+                this.sizemap.get(tags.size()).add(picture);
+            }
 
             // Direction true = horizontal
             this.pictures.add(picture);
@@ -51,6 +62,8 @@ public class Parser {
             else
                 this.verticals.add(picture);
         }
+
+        System.out.println(tagIndex);
     }
 
     public void readSolution(String file) throws Exception {
@@ -98,5 +111,9 @@ public class Parser {
 
     public HashMap<Integer, ArrayList<Picture>> getSizemap() {
         return sizemap;
+    }
+
+    public HashMap<String, ArrayList<Picture>> getPictureMap() {
+        return pictureMap;
     }
 }
