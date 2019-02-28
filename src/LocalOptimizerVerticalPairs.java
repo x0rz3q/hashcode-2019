@@ -35,12 +35,12 @@ public class LocalOptimizerVerticalPairs {
         int currentScore = getScore(i) + getScore(j);
 
         Picture pic = slide1.getPicture2();
-        slide1.setPicture2(slide1.getPicture1());
+        slide1.setPicture2(slide2.getPicture1());
         slide2.setPicture1(pic);
         int scoreSwap1 = getScore(i) + getScore(j);
 
         pic = slide1.getPicture2();
-        slide1.setPicture2(slide1.getPicture2());
+        slide1.setPicture2(slide2.getPicture2());
         slide2.setPicture2(pic);
         int scoreSwap2 = getScore(i) + getScore(j);
 
@@ -50,13 +50,13 @@ public class LocalOptimizerVerticalPairs {
 
         if (scoreSwap1 > currentScore) {
             pic = slide1.getPicture2();
-            slide1.setPicture2(slide1.getPicture2());
+            slide1.setPicture2(slide2.getPicture2());
             slide2.setPicture2(pic);
             return;
         }
 
         pic = slide1.getPicture2();
-        slide1.setPicture2(slide1.getPicture1());
+        slide1.setPicture2(slide2.getPicture1());
         slide2.setPicture1(pic);
     }
 
