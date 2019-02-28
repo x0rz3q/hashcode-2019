@@ -11,5 +11,13 @@ public class Controller {
         }
 
         Parser parser = new Parser(args[0]);
+
+        if (args.length > 1) {
+            if (!(new File(args[1]).exists())) {
+                throw new Exception("File " + args[1] + " does not exist!");
+            }
+
+            parser.readSolution(args[1]);
+        }
     }
 }

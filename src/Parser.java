@@ -5,6 +5,8 @@ public class Parser {
     private int total;
     private HashMap<String, Integer> tags = new HashMap<>();
     private List<Picture> pictures = new ArrayList<>();
+    private List<Slide> slideshow = new ArrayList<>();
+    private HashMap<Integer, Picture> indexed = new HashMap<>();
 
     public Parser(String file) throws Exception {
         Scanner scanner = new Scanner(new File(file));
@@ -29,9 +31,46 @@ public class Parser {
                     tagIndex++;
                 }
 
+                Picture picture = new Picture(orientation.equals("H"), id++, tags);
                 // Direction true = horizontal
-                this.pictures.add(new Picture(orientation.equals("H"), id++, tags));
+                this.pictures.add(picture);
+                this.indexed.put(picture.getId(), picture);
             }
         }
+    }
+
+    public void readSolution(String file) throws Exception {
+        Scanner scanner = new Scanner(new File(file));
+
+        int amount = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < amount; i++) {
+            String line = scanner.nextLine();
+            String[] parts = line.split(" ");
+            Picture first = this.indexed.get(Integer.parseInt(parts[0]));
+
+            Picture second = null;
+            if (parts.length > 1)
+                second = this.indexed.get(Integer.parseInt(parts[1]));
+
+            this.slideshow.add(new Slide(first, second));
+        }
+    }
+
+    public List<Slide> getSlideshow() {
+        return slideshow;
+    }
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public HashMap<Integer, Picture> getIndexed() {
+        return indexed;
+    }
+
+    public HashMap<String, Integer> getTags() {
+        return tags;
     }
 }
