@@ -45,8 +45,11 @@ public class Parser {
             // Direction true = horizontal
             this.pictures.add(picture);
             this.indexed.put(picture.getId(), picture);
-            this.verticals.add(picture);
-            this.horizontals.add(picture);
+
+            if (picture.getDir())
+                this.horizontals.add(picture);
+            else
+                this.verticals.add(picture);
         }
     }
 
