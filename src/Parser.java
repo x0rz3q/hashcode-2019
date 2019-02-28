@@ -9,6 +9,7 @@ public class Parser {
     private HashMap<Integer, Picture> indexed = new HashMap<>();
     private HashSet<Picture> verticals = new HashSet<>();
     private HashSet<Picture> horizontals = new HashSet<>();
+    private HashMap<Integer, ArrayList<Picture>> sizemap = new HashMap<>();
 
     public Parser(String file) throws Exception {
         Scanner scanner = new Scanner(new File(file));
@@ -35,6 +36,12 @@ public class Parser {
             }
 
             Picture picture = new Picture(orientation.equals("H"), id++, tags);
+
+            if (this.sizemap.containsKey(tags.size()))
+                this.sizemap.get(tags.size()).add(picture);
+            else
+                this.sizemap.put(tags.size(), new ArrayList<>(){{add(picture);}});
+
             // Direction true = horizontal
             this.pictures.add(picture);
             this.indexed.put(picture.getId(), picture);
@@ -84,5 +91,9 @@ public class Parser {
 
     public HashSet<Picture> getHorizontals() {
         return horizontals;
+    }
+
+    public HashMap<Integer, ArrayList<Picture>> getSizemap() {
+        return sizemap;
     }
 }
