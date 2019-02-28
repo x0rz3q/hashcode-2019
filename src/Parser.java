@@ -7,6 +7,8 @@ public class Parser {
     private List<Picture> pictures = new ArrayList<>();
     private List<Slide> slideshow = new ArrayList<>();
     private HashMap<Integer, Picture> indexed = new HashMap<>();
+    private HashSet<Picture> verticals = new HashSet<>();
+    private HashSet<Picture> horizontals = new HashSet<>();
 
     public Parser(String file) throws Exception {
         Scanner scanner = new Scanner(new File(file));
@@ -35,6 +37,8 @@ public class Parser {
                 // Direction true = horizontal
                 this.pictures.add(picture);
                 this.indexed.put(picture.getId(), picture);
+                this.verticals.add(picture);
+                this.horizontals.add(picture);
             }
         }
     }
@@ -72,5 +76,13 @@ public class Parser {
 
     public HashMap<String, Integer> getTags() {
         return tags;
+    }
+
+    public HashSet<Picture> getVerticals() {
+        return verticals;
+    }
+
+    public HashSet<Picture> getHorizontals() {
+        return horizontals;
     }
 }
