@@ -27,5 +27,7 @@ public class SlideShow {
         for (Slide s: this.slides) {
             writer.write(s.toString() + lineSeperator);
         }
+
+        writer.close();
     }
 }
