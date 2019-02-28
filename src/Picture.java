@@ -5,11 +5,13 @@ public class Picture {
     private boolean dir; // TRUE = HORIZONTAL
     private int id;
     private List<Integer> tags;
+    private int size;
 
     Picture (boolean dir, int id, List<Integer> tags) {
         this.dir = dir;
         this.id = id;
         this.tags = tags;
+        this.size = tags.size();
     }
 
     List<Integer> getTags() {
@@ -31,6 +33,10 @@ public class Picture {
 
     int getId() {
         return this.id;
+    }
+
+    int getSize() {
+        return this.size = size;
     }
 
     boolean getDir() {
