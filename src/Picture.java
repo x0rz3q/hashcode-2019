@@ -2,11 +2,11 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Picture {
-    private Direction dir;
+    private boolean dir; // TRUE = HORIZONTAL
     private int id;
     private List<Integer> tags;
 
-    Picture (Direction dir, int id, List<Integer> tags) {
+    Picture (boolean dir, int id, List<Integer> tags) {
         this.dir = dir;
         this.id = id;
         this.tags = tags;
@@ -20,7 +20,11 @@ public class Picture {
 //        return tags.sort(new Comparator<Integer>() {
 //            @Override
 //            public int compare(Integer integer, Integer t1) {
-//                return integer < t1 ? 0;
+//                if (integer < t1) {
+//                    return 1;
+//                } else {
+//                    return 0;
+//                }};
 //            }
 //        });
 //    }
@@ -29,7 +33,7 @@ public class Picture {
         return this.id;
     }
 
-    Direction getDir() {
+    boolean getDir() {
         return this.dir;
     }
 }
