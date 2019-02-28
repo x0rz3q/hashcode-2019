@@ -19,6 +19,9 @@ public class SlideShow {
         int n = this.slides.size();
         writer.write(n + lineSeperator);
 
+    void addSlide(Slide s) {
+        this.slides.add(s);
+    }
         // TODO: write n, write newline
         for (Slide s: this.slides) {
             writer.write(s.toString() + lineSeperator);
