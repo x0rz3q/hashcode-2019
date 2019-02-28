@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.List;
 
 public class Controller {
     public static void main(String[] args) throws Exception {
@@ -19,5 +20,16 @@ public class Controller {
 
             parser.readSolution(args[1]);
         }
+
+
+        List<Picture> pictures = parser.getPictures();
+        for (Picture p : pictures) {
+            System.out.println("picture: " + p.getId() + " " + p.getDir());
+            for (int i : p.getTags()) {
+                System.out.println(i);
+            }
+
+        }
+
     }
 }

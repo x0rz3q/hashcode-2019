@@ -47,7 +47,7 @@ public class LocalOptimizer {
         if (i < slides.length - 1) {
             score += Evaluator.evaluateSlide(slides[i], slides[i + 1]);
         }
-        
+
         return score;
     }
 
