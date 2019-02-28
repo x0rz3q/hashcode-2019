@@ -7,18 +7,27 @@ public class Picture {
     private int id;
     private Set<Integer> tags;
     private int size;
+    private boolean taken;
 
     Picture (boolean dir, int id, Set<Integer> tags) {
         this.dir = dir;
         this.id = id;
         this.tags = tags;
         this.size = tags.size();
+        this.taken = false;
     }
 
     Set<Integer> getTags() {
         return this.tags;
     }
 
+    boolean isTaken() {
+        return this.taken;
+    }
+
+    void take() {
+        this.taken = true;
+    }
 //    List<Integer> getSortedTags() {
 //        return tags.sort(new Comparator<Integer>() {
 //            @Override
