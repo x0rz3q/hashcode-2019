@@ -14,6 +14,7 @@ public class Controller {
             throw new Exception("File " + args[0] + " does not exist!");
         }
 
+        System.out.println(args[0]);
         Parser parser = new Parser(args[0]);
 
         if (args.length > 1) {
@@ -23,20 +24,18 @@ public class Controller {
 
             parser.readSolution(args[1]);
         }
-
-        // getting first order with good vertical matching
-        List<Slide> slides = Preprocessor.preprocess(parser.getVerticals(), parser.getHorizontals(), 10000);
-
-        slides = GreedySolutionHidde.generate(slides);
-
-        //
-        HashMap<Integer, ArrayList<Slide>> sizemapSlides = new HashMap<>();
-        for (Slide s: slides) {
-            if (sizemapSlides.containsKey(s.getTags().size()))
-                sizemapSlides.get(s.getTags().size()).add(s);
-            else
-                sizemapSlides.put(s.getTags().size(), new ArrayList<Slide>(){{add(s);}});
-        }
+//
+//        // getting first order with good vertical matching
+//
+//        slides = GreedySolutionHidde.generate(slides);
+//
+//        HashMap<Integer, ArrayList<Slide>> sizemapSlides = new HashMap<>();
+//        for (Slide s: slides) {
+//            if (sizemapSlides.containsKey(s.getTags().size()))
+//                sizemapSlides.get(s.getTags().size()).add(s);
+//            else
+//                sizemapSlides.put(s.getTags().size(), new ArrayList<Slide>(){{add(s);}});
+//        }
 
 
         // get good first sort
@@ -44,15 +43,27 @@ public class Controller {
         // TODO: add
 
         // optimize order of slides
-        LocalOptimizerOrder optimizer = new LocalOptimizerOrder();
+        SlideShow best = null;
 
-        Slide[] slideArray = new Slide[slides.size()];
-        slideArray = slides.toArray(slideArray);
+        for (int i = 0; i < 10; i++) {
+            SlideShow slides = RandomSolution.generate(parser.getPictures());
 
-        optimizer.optimize(slideArray,  1000);
+            LocalOptimizerOrder optimizer = new LocalOptimizerOrder();
 
-        // output to test.txt
-        (new SlideShow(Arrays.asList(slideArray))).output("test.txt");
+            Slide[] slideArray = new Slide[slides.getSlides().size()];
+            slideArray = slides.getSlides().toArray(slideArray);
 
+            optimizer.optimize(slideArray,  1000000);
+
+            // output to test.txt
+            SlideShow result = new SlideShow(Arrays.asList(slideArray));
+
+            if (best == null)
+                best = result;
+            else if(Evaluator.evaluateSlideShow(result.slides) > Evaluator.evaluateSlideShow(best.slides))
+                best = result;
+        }
+
+        best.output("outputFiles" + File.separator + (new File(args[0]).getName()));
     }
 }

@@ -30,4 +30,8 @@ public class SlideShow {
 
         writer.close();
     }
+
+    public List<Slide> getSlides() {
+        return slides;
+    }
 }

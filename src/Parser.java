@@ -11,6 +11,7 @@ public class Parser {
     private HashSet<Picture> horizontals = new HashSet<>();
     private HashMap<Integer, ArrayList<Picture>> sizemap = new HashMap<>();
     private HashMap<String, ArrayList<Picture>> pictureMap = new HashMap<>();
+    private HashMap<String, Integer> amountTags = new HashMap<>();
 
     public Parser(String file) throws Exception {
         Scanner scanner = new Scanner(new File(file));
@@ -42,6 +43,12 @@ public class Parser {
                 } else {
                     this.pictureMap.put(tag, new ArrayList<Picture>());
                     this.pictureMap.get(tag).add(picture);
+                }
+
+                if (this.amountTags.containsKey(tag)) {
+                    this.amountTags.put(tag, this.amountTags.get(tag) + 1);
+                } else {
+                    this.amountTags.put(tag, 1);
                 }
             }
 
@@ -115,5 +122,9 @@ public class Parser {
 
     public HashMap<String, ArrayList<Picture>> getPictureMap() {
         return pictureMap;
+    }
+
+    public HashMap<String, Integer> getAmountTags() {
+        return amountTags;
     }
 }
