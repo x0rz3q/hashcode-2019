@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RandomSolution {
     static Random random = new Random();
@@ -12,15 +10,14 @@ public class RandomSolution {
             taken.add(0);
         }
 
+        Collections.shuffle(pictures);
+
         SlideShow SS = new SlideShow();
-        for (int i = 0; i < size; i++) {
-            int j = random.nextInt(size);
-            while (taken.get(j) == 1) {
-                j = (j + 1) % size;
-            }
-            SS.addSlide(new Slide(pictures.get(j)));
-            taken.set(j, 1);
+
+        for (Picture picture : pictures) {
+            SS.addSlide(new Slide(picture));
         }
+
         return SS;
     }
 }
