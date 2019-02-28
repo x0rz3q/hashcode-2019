@@ -40,7 +40,7 @@ public class Parser {
             if (this.sizemap.containsKey(tags.size()))
                 this.sizemap.get(tags.size()).add(picture);
             else
-                this.sizemap.put(tags.size(), new ArrayList<>(){{add(picture);}});
+                this.sizemap.put(tags.size(), new ArrayList<Picture>(){{add(picture);}});
 
             // Direction true = horizontal
             this.pictures.add(picture);
