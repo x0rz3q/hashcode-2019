@@ -25,7 +25,7 @@ public class Controller {
         }
 
         // getting first order with good vertical matching
-        List<Slide> slides = Preprocessor.preprocess(parser.getVerticals(), parser.getHorizontals());
+        List<Slide> slides = Preprocessor.preprocess(parser.getVerticals(), parser.getHorizontals(), 10000);
 
         //
         HashMap<Integer, ArrayList<Slide>> sizemapSlides = new HashMap<>();
