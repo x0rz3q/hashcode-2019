@@ -29,7 +29,7 @@ public class Controller {
 
         //
         HashMap<Integer, ArrayList<Slide>> sizemapSlides = new HashMap<>();
-        for (Slide s: slides) { 
+        for (Slide s: slides) {
             if (sizemapSlides.containsKey(s.getTags().size()))
                 sizemapSlides.get(s.getTags().size()).add(s);
             else

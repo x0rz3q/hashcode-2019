@@ -3,13 +3,13 @@ import java.util.Set;
 
 public class Slide {
     Picture[] pictures;
-
+    boolean taken = false;
     public Slide(Picture p1) {
         pictures = new Picture[] {p1};
     }
     public Slide(Picture p1, Picture p2) {
         pictures = new Picture[] {p1, p2};
-    }
+\    }
 
     @Override
     public String toString() {
@@ -20,7 +20,13 @@ public class Slide {
         return "" + this.pictures[0].getId() + " " + this.pictures[1].getId();
     }
 
+    public boolean isTaken() {
+        return this.taken;
+    }
 
+    public void take() {
+        this.taken = true;
+    }
     public Picture getPicture1() {
         return pictures[0];
     }
