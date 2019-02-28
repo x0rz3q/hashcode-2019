@@ -3,24 +3,20 @@ import java.util.*;
 public class GreedySolutionHidde {
     static Random random = new Random();
 
-    static SlideShow generate(HashMap<Integer, ArrayList<Picture>> map) {
+    static List<Slide> generate(List<Slide> input) {
         SlideShow SS = new SlideShow();
-        Set<Integer> keys = map.keySet();
-        List<Integer> keyList = new ArrayList<>(keys);
 
-        keyList.sort(new Comparator<Integer>() {
+        class SlideComparator implements Comparator<Slide> {
+
             @Override
-            public int compare(Integer integer, Integer t1) {
-                return integer < t1 ? 1 : -1;
+            public int compare(Slide s1, Slide s2) {
+                return s1.getTags().size() - s2.getTags().size();
             }
-        });
+        }
 
+        Collections.sort(input, new SlideComparator());
 
-
-
-
-
-
+        return input;
 
     }
 
