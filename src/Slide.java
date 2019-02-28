@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class Slide {
     Picture[] pictures;
 
@@ -15,5 +18,14 @@ public class Slide {
         }
 
         return "" + this.pictures[0].getId() + " " + this.pictures[1].getId();
+    }
+
+
+    public Set<Integer> getTags() {
+        Set<Integer> tags = new HashSet<>();
+        for (Picture p : pictures) {
+            tags.addAll(p.getTags());
+        }
+        return tags;
     }
 }
