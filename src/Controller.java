@@ -22,8 +22,14 @@ public class Controller {
             parser.readSolution(args[1]);
         }
 
+        // getting first order with good vertical matching
         List<Slide> slides = Preprocessor.preprocess(parser.getVerticals(), parser.getHorizontals());
 
+        // get good first sort
+
+        // TODO: add
+
+        // optimize order of slides
         LocalOptimizerOrder optimizer = new LocalOptimizerOrder();
 
         Slide[] slideArray = new Slide[slides.size()];
@@ -31,6 +37,7 @@ public class Controller {
 
         optimizer.optimize(slideArray);
 
+        // output to test.txt
         (new SlideShow(Arrays.asList(slideArray))).output("test.txt");
 
     }
