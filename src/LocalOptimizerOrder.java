@@ -5,10 +5,10 @@ public class LocalOptimizerOrder {
     private Random random = new Random();
     private Slide[] slides;
 
-    public void optimize(Slide[] input) {
+    public void optimize(Slide[] input, int noIterations) {
         slides = input;
 
-        for (int i = 0; i < 100; i++ ){
+        for (int i = 0; i < noIterations; i++ ){
             optimizeOnce();
         }
     }

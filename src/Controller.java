@@ -35,7 +35,7 @@ public class Controller {
         Slide[] slideArray = new Slide[slides.size()];
         slideArray = slides.toArray(slideArray);
 
-        optimizer.optimize(slideArray);
+        optimizer.optimize(slideArray,  1000);
 
         // output to test.txt
         (new SlideShow(Arrays.asList(slideArray))).output("test.txt");
